@@ -12,12 +12,21 @@
 
 # Details
 
-- Server-side:
-  - springboot + redis  + SocketIO: 
-    - API 서버 제외하고 MQ만 사용해도 기존 요구사항은 충족할 수 있으나, API서버는 추후를 위해 구축해서 나쁠것이 없다고 생각한다. 유효기간 관리에는 redis만한게 없는 것 같다. 제한된 사용자 수때문에 인가 여부를 확인하는 request를 무한정 보낸다 하더라도 네트워크/서버부하 등의 문제는 걱정 없지만 굳이 그렇게 하고 싶진 않았다. 
-- Executable Program & telegram Controller
-  - python : flet 라이브러리가 Flutter-like 실행파일을 만드는데 있어 굉장히 유효했다 (cross-platform인것은 덤) 
-- Infra: EC2 + docker-compose
+1. 사용자는 스트리머 명과 할당하고자 하는 시청자 유입 수를 입력한다
+
+2. Controller는 요구사항을 충족할 수 있는 `REGION`을 찾고, `REGION`, `name`, `num`을 input값으로 스크립트를 실행시킨다 
+   - 하나의 IDC에서 생성할 수 있는 최대 EC2 인스턴스 수는 18이었다.
+3. 스크립트 실행
+   1. 유입수 / 3의 갯수만큼 stopped상태인 instance를 running으로 바꾼다
+   2. 새로 동작하는 인스턴스에 대해, 3개의 컨테이너를 실행시킨다 (환경변수: name)
+   3. 컨테이너는 `selenium`활용해 웹페이지에 접속하는 용도이다
+4. 스트리머가 방송을 종료한 경우, 스트리머 명으로 떠있는 instance를 종료할 수 있다 
+
+
+
+CSP가 사용할 수 있는 instance의 갯수에 제한을 두었다는 것에 한번 놀랬다
+
+k8s operator패턴을 이용해 요청에 따라 pod를 할당하는 방식으로 작업하고 싶었으나, 스트리밍 플랫폼이 하나의 IP에 대해 최대 3의 시청자 수를 늘릴 수 있도록 되어있기 때문에 적용할 수 없었다.
 
 
 
