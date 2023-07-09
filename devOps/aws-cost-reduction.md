@@ -2,18 +2,19 @@
 
 
 
-k8s를 도입하게 된 이유는 다음과 같다.
+EKS(k8s)를 도입하게 된 이유는 다음과 같다.
 
 1. 개발 완료 / 운영중인 서비스가 4개가 있으며, 지속적인 프로토타입 형태의 서비스 개발이 이뤄지고 운영할 수 있어야 한다.
 1. 작업자인 내 기준으로, 기존 배포환경으로 사용하고 있는 ECS보다 k8s가 더 사용하기 편하고, 유용하다
 1. k8s 생태계를 활용할 수 있다
 1. 현재 기준에서, 절대적인 비용 절감을 이뤄낼 수 있기 때문이다.
 
-
+- 최근 3개월 비용 
 
 ![Screen Shot 2023-07-09 at 3 12 16 PM](https://github.com/S-hayeon/archive/assets/25574165/9ee4dda1-a9e5-4081-95d6-62deea66a7e3)
 
-
+- 업데이트 이후 비용
+  - TBU
 
 기존 평균 월 $ 2000 ~ 2300불 내외의 요금이 발생하고 있었다.
 
@@ -21,7 +22,9 @@ k8s를 도입하게 된 이유는 다음과 같다.
 
 이렇게 비용이 발생할 필요가 없었던 와중, aws 비용 절감에 대한 요청이 있었다.
 
-k8s를 사용하지 않아도 절감은 가능하다. 하지만, 내가 원할한 운영을 하기 위해서는 이 방법이 나을 것이라 생각한다.
+k8s를 사용하지 않아도 절감은 가능하지만, 
+
+n개의 서비스를 한번에 관리/운영하기 위해서 + 사용자 편의성을 생각했을 때 k8s가 낫다고 생각했다.
 
 
 
@@ -35,10 +38,10 @@ k8s를 사용하지 않아도 절감은 가능하다. 하지만, 내가 원할�
 6. `Argocd`: CD
 7. `istio`: traffic-management
 8. `jaeger / kiali` : tracing / monitoring
-9. Nginx-ingress
-10. gitea : private git
+9. `nginx-ingress`
+10. `gitea` : private git
 
-
+그 외 부가/고려하고 있는  모듈들: `sonar-qube`, `keycloak`, `vault`, `package-servers`(nexus, pipit)
 
 우선은 single cluster w/ 5 nodes로 구성하고, 추후에 hybrid로 전환하고자 한다.
 
