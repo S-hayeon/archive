@@ -44,7 +44,7 @@ n개의 서비스를 한번에 관리/운영하기 위해서 + 사용자 편의�
 1. `cert-manager` : certificate <-> AWS certificate-manager
 2. `harbor` : image registry <-> AWS ECR
 3. `mysql / mariaDB cluster` : RDB <-> AWS RDS
-4. `ELK` : logging <-> AWS cloud watch
+4. `EFK` : logging <-> AWS cloud watch
 5. `tekton`: CI
 6. `Argocd`: CD
 7. `istio`: traffic-management
