@@ -46,13 +46,17 @@ n개의 서비스를 한번에 관리/운영하기 위해서 + 사용자 편의�
 3. `mysql / mariaDB cluster` : RDB <-> AWS RDS
 4. `EFK` : logging <-> AWS cloud watch
 5. `tekton`: CI
-6. `Argocd`: CD
-7. `istio`: traffic-management
-8. `jaeger / kiali` : tracing / monitoring
-9. `nginx-ingress`
+6. sonarqube: CI
+7. `Argocd`: CD
+8. `istio`: traffic-management
+9. `jaeger / kiali` : tracing / monitoring
 10. `gitea` : private git
+11. `keycloak`: OIDC
+12. `nexus`: pirvate package server 
+13. `nginx-ingress`
+14. TBU
 
-그 외 부가/고려하고 있는 모듈들: `sonar-qube`, `keycloak`, `vault`, `package-servers`(nexus, pipit)
+
 
 ------
 
